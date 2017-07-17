@@ -34,7 +34,7 @@ class InvoicePaid extends Notification {
      * @return array
      */
     public function via($notifiable) {
-        return ['database'];
+        return $notifiable->getNotificationSubscriptionChannels(__CLASS__);
     }
 
     /**

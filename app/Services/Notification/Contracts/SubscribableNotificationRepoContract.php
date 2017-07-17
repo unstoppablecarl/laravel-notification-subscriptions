@@ -23,7 +23,8 @@ interface SubscribableNotificationRepoContract {
     public function hasNotification($notificationClass);
 
     /**
-     * Filters user subscription data removing invalid notification classes and channels
+     * Filters user subscription data removing invalid notification classes and channels.
+     * Used before storing subscription settings.
      * @param array $data
      * @return array
      */
