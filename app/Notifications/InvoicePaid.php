@@ -2,6 +2,7 @@
 
 namespace App\Notifications;
 
+use App\Models\Concerns\HasNotificationSubscriptions;
 use App\Models\Invoice;
 use App\Notifications\Concerns\UserSubscribableNotification;
 use Illuminate\Notifications\Notification;
@@ -34,7 +35,9 @@ class InvoicePaid extends Notification {
      * @return array
      */
     public function via($notifiable) {
-        return $notifiable->getNotificationSubscriptionChannels(__CLASS__);
+        if($notifiable instanceof HasNotificationSubscriptions){
+            return $notifiable->getNotificationSubscriptionChannels(__CLASS__);
+        }
     }
 
     /**
