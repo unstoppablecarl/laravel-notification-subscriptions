@@ -23,7 +23,7 @@ class NotificationSubscriptionServiceProvider extends ServiceProvider {
             return new SubscribableNotificationRepo($classes, $channels);
         });
 
-        $this->app->bind(SubscriptionStoreContract::class, UserColumnSubscriptionStore::class);
+        $this->app->singleton(SubscriptionStoreContract::class, UserColumnSubscriptionStore::class);
 
     }
 }
